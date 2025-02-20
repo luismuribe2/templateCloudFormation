@@ -42,7 +42,7 @@ Resources:
     Properties:
       GroupDescription: "Permitor tráfico HTTP en el puerto 80"
       VpcId:
-        Ref: pVPCId
+        Ref: MyVPC
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
@@ -69,7 +69,7 @@ Resources:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock:
-        Ref: pCidrBlock
+        Ref: pCidrIp  
       EnableDnsSupport: true
       EnableDnsHostnames: true
       Tags:
