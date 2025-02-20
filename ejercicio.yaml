@@ -5,6 +5,7 @@ Parameters:
   pBucketname:
     Type: String
     Description: "Name bucket S3"
+    Default: "Bucket-S3"
 
   pInstanceType:
     Type: String
@@ -15,10 +16,6 @@ Parameters:
     Type: AWS::EC2::Image::Id
     Description: "Id de AMI Instancia S2" 
     Default:  "ami-0fc5d935ebf8bc3bc"
-
-  pVPCId:
-    Type: AWS::EC2::VPC::Id 
-    Description: "Id de VPC" 
   
   pCidrIp:
     Type: String
@@ -66,3 +63,15 @@ Resources:
       Tags:
         - Key: key
           Value: value
+
+  # Crear la VPC
+  MyVPC: 
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock:
+        Ref: pCidrBlock
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: "MyVPC"
